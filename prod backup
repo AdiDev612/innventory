@@ -1,0 +1,159 @@
+<?php
+@include 'connection.php';
+
+session_start();
+if(!isset($_SESSION['valid'])){
+  header("Location:LogIn.php");
+}
+
+if(isset($_POST['add_product'])){
+
+   $product_name = $_POST['product_name'];
+   $product_id = $_POST['product_id'];
+   $product_variant = $_POST['product_variant'];
+   $product_image = $_FILES['product_image']['name'];
+   $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
+   $product_image_folder = 'uploaded_img/'.$product_image;
+}
+
+
+
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Primachem</title>
+    <link rel="stylesheet" href="prod.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">Primachem</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="Dashboard.php">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="Inventory.php">
+         <i class='bx bx-layer' ></i>
+         <span class="links_name">Inventory</span>
+       </a>
+       <span class="tooltip">Inventory</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-package' ></i>
+         <span class="links_name">Products</span>
+       </a>
+       <span class="tooltip">Products</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-notification' ></i>
+         <span class="links_name">Notification</span>
+       </a>
+       <span class="tooltip">Notification</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Setting</span>
+       </a>
+       <span class="tooltip">Setting</span>
+     </li>
+     <li class="profile">
+         <div class="profile-details">
+           <img src="img/Logo.png" alt="profileImg">
+           <div class="name_job">
+             <div class="name">Adrian</div>
+             <div class="job">Employee</div>
+           </div>
+         </div>
+         <a href="Logout.php">
+         <i class='bx bx-log-out' id="log_out" ></i>
+         </a>
+     </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="text">| Products</div>
+    <div class="home-container">
+      <div class="home-left">
+        <div class="card-body color1">
+          <div class="float-left">
+              <h3>
+              <span class="count"><?php echo $product_count; ?></span>
+              </h3>
+              <p>Total Products</p>
+              <div class="float-right"></div>
+          </div>
+        </div>
+        <div class="card-body color1">
+          <div class="float-left">
+              <h3>
+              <span class="count"><?php echo $product_count; ?></span>
+              </h3>
+              <p>CAPS</p>
+              <div class="float-right"></div>
+          </div>
+        </div>
+      </div>
+     
+      <div class="home-right">
+        <div class="product-container">
+          <div class="text">Products List</div>
+            <div class="upper">
+              <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                <input type="text" placeholder="enter product name" name="product_name" class="input">
+                <input type="number" placeholder="enter product id" name="product_id" class="input">
+                <input type="number" placeholder="variant" name="product_variant" class="input">
+                <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box">
+                <input type="submit" class="btn" name="add_product" value="add product">
+              </form>
+            </div>
+          <div class="mid">
+          <div class="product-display">
+              <table class="product-display-table">
+                <thead>
+                  <tr>
+                    <th>IMAGE</th>
+                    <th>NAME</th>
+                    <th>ID</th>
+                    <th>VARIANT</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+              
+          </div>
+          <div class="bottom"></div>
+        </div>
+      </div>
+  </section>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+    document.body.classList.toggle("sidebar-open");
+  });
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+   }
+  }
+  </script>
+</body>
+</html>

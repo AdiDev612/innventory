@@ -1,0 +1,104 @@
+
+header {
+    position: fixed;
+    width: 100px;
+    margin-left: 25px;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 0 10px;
+  }
+  
+  .navbar {
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    width: 1520px;
+    margin: 0 auto;
+    background: #fff;
+    justify-content: space-between;
+  }
+  
+  .navbar .logo {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .navbar .logo img {
+    width: 50px;
+    border-radius: 50%;
+  }
+  
+  .navbar .logo h2 {
+    color: #74dfff;
+    font-weight: 20px;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+
+  #containers .box1 .text {
+    display: flex;
+    color: #11101d;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-left: 300px;
+  }
+
+  #containers .box1 p {
+    color: #11101d;
+    font-size: 30px;
+    font-weight: 200;
+    margin-top: 50px;
+
+  }
+
+  #containers .box1 {
+    height: 780x;
+    width: 1000px;
+    position: center;
+    margin: 0 auto;
+  }
+
+  .button-container {
+    text-align: center;
+}
+
+.agree-button {
+    margin: auto;
+    background-color: rgb(125, 207, 245);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+  .box1 {
+    height: 780px;
+    overflow: auto; 
+  }
+
+  .box1::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .box1::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .box1::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .box1::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .bottom {
+    display: flex;
+    height: 100px;
+    width: max-content;
+    background: #74dfff;
+  }

@@ -1,0 +1,202 @@
+<div class="forms-container">
+                    <div class="signin-signup">
+                        <form action="#" method="post" class="sign-in-form">
+                            <h2 class="title">Sign in</h2>
+                            <div class="input-field">
+                                <i class="bx bx-envelope"></i>
+                                <input type="text" placeholder="Email" name="email" id="email" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="bx bx-lock"></i>
+                                <input type="password" placeholder="Password" name="password" id="password" required>
+                            </div>
+                            <a href="Forgot_password.php" class="forgot-pass-link">Forgot password?</a>
+                            <button class="btn solid" type="submit" name="submit" id="submit">Log In</button>
+                        </form>
+
+                        .container {
+  position: relative;
+  width: 100%;
+  background-color: #fcfcfc;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+<header>
+            <nav class="navbar">
+              <a href="#" class="logo">
+                <img src="img/Logo.png" alt="logo">
+                <h2>Primachem</h2>
+              </a>
+            </nav>  
+        </header>
+
+
+        session_start();
+if(!isset($_SESSION['valid'])){
+  header("Location:LogIn.php");
+}
+
+session_start();
+if(!isset($_SESSION['valid'])){
+  header("Location:LogIn.php");
+}
+
+________________________________________________________________________________________________________________________________-
+
+
+<?php
+include("connection.php");
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Primachem</title>
+    <link rel="stylesheet" href="invess.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">Primachem</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="Dashboard.php">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="#">
+         <i class='bx bx-layer' ></i>
+         <span class="links_name">Inventory</span>
+       </a>
+       <span class="tooltip">Inventory</span>
+     </li>
+     <li>
+       <a href="Product.php">
+         <i class='bx bx-package' ></i>
+         <span class="links_name">Products</span>
+       </a>
+       <span class="tooltip">Products</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-notification' ></i>
+         <span class="links_name">Notification</span>
+       </a>
+       <span class="tooltip">Notification</span>
+     </li>
+     <li>
+       <a href="#">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Setting</span>
+       </a>
+       <span class="tooltip">Setting</span>
+     </li>
+     <li class="profile">
+         <div class="profile-details">
+           <img src="img/Logo.png" alt="profileImg">
+           <div class="name_job">
+             <div class="name">Adrian</div>
+             <div class="job">Employee</div>
+           </div>
+         </div>
+         <a href="Logout.php">
+         <i class='bx bx-log-out' id="log_out" ></i>
+         </a>
+     </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="text">| Inventory</div>
+
+    <div class="home-container">
+      <div class="home-upper">
+        <div class="card-body color1">
+          <div class="float-left">
+            <h3>
+            <span class="count">0</span>
+            </h3>
+            <p>Caps</p>
+            <div class="float-right"></div>
+          </div>
+        </div>
+        <div class="card-body color1">
+          <div class="float-left">
+            <h3>
+            <span class="count">0</span>
+            </h3>
+            <p>Sprayer</p>
+            <div class="float-right"></div>
+          </div>
+        </div>
+        <div class="card-body color1">
+          <div class="float-left">
+            <h3>
+            <span class="count">0</span>
+            </h3>
+            <p>Bottle</p>
+            <div class="float-right"></div>
+          </div>
+        </div>
+        <div class="card-body color1">
+          <div class="float-left">
+            <h3>
+            <span class="count">0</span>
+           </h3>
+            <p>Sticker</p>
+            <div class="float-right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="home-contain">
+        <div class="home-left">
+          <div class="add-stocks">
+            <div class="text">Add Stocks</div>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+              <label for="product">Select Product:</label>
+              <select name="product_id" id="product_id" class="input" required>
+                <option value="">Select Product</option>
+                <option value="1">Caps</option>
+                <option value="2">Sprayer</option>
+                <option value="3">Bottle</option>
+                <option value="4">Sticker</option>
+              </select>
+              <input type="number" placeholder="stocks" name="stocks" class="input" required>
+              <input type="submit" class="btn" name="add" value="add product">
+            </form>
+          </div>
+        </div>
+        <div class="home-right">
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();
+    document.body.classList.toggle("sidebar-open");
+  });
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
+   }
+  }
+  </script>
+</body>
+</html>
+
+<a href="Forgot_password.php" class="forgot-pass-link">Forgot password?</a>
